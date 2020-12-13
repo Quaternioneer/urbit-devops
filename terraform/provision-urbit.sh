@@ -6,19 +6,11 @@ sudo apt install -y screen automake autoconf libtool cmake
 
 # Download build, and install the urbit source package
 cd ~
-mkdir source
+mkdir source piers
 cd source
-wget https://bootstrap.urbit.org/urbit-v0.10.8-linux64.tgz
-
-tar xfvz urbit-v0.10.8-linux64.tgz
-cd urbit-v0.10.8-linux64
-mv urbit* ../../piers
-
-# Add 2GB of swap so that we have enough memory to start up
-sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=2048
-sudo /sbin/mkswap /var/swap.1
-sudo chmod 600 /var/swap.1
-sudo /sbin/swapon /var/swap.1
+wget --content-disposition https://urbit.org/install/linux64/latest
+tar zxvf ./linux64.tgz --strip=1
+mv urbit* ../piers
 
 #ToDo: The following line does not seem to write to fstab. Also, the above does not persist after rebooting; test and fix this.
 #sudo echo "swap        /var/swap.1 swap    defaults        0   0" >> /etc/fstab
