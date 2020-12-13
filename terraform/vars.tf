@@ -22,7 +22,7 @@ variable "AWS_AMI_ID" {
 }
 
 variable "AWS_INSTANCE_TYPE" {
-  default = "t2.medium"
+  default = "t2.nano"
 }
 
 variable "AWS_REGION" {

@@ -12,10 +12,15 @@ wget --content-disposition https://urbit.org/install/linux64/latest
 tar zxvf ./linux64.tgz --strip=1
 mv urbit* ../piers
 
-#ToDo: The following line does not seem to write to fstab. Also, the above does not persist after rebooting; test and fix this.
-#sudo echo "swap        /var/swap.1 swap    defaults        0   0" >> /etc/fstab
+# Add 2GB of swap so that we have enough memory to start up
+sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=2048
+sudo /sbin/mkswap /var/swap.1
+sudo chmod 600 /var/swap.1
+sudo /sbin/swapon /var/swap.1
+sudo echo "swap        /var/swap.1 swap    defaults        0   0" >> /etc/fstab
 
 # Set up forwarding from port 80 (http) to 8080 and 443 (https) to 8443
+#IPtables doesn't persist after rebooting; fix this.
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to-destination :8080
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to-destination :8443
 
