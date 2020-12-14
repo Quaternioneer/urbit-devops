@@ -17,7 +17,11 @@ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=2048
 sudo /sbin/mkswap /var/swap.1
 sudo chmod 600 /var/swap.1
 sudo /sbin/swapon /var/swap.1
-sudo echo "swap        /var/swap.1 swap    defaults        0   0" >> /etc/fstab
+#sudo echo "swap        /var/swap.1 swap    defaults        0   0" >> /etc/fstab
+#The above line does not perform >> /etc/fstab as root, so I have this hack:
+sudo su root
+echo "/var/swap.1 none	swap    defaults        0   0" >> /etc/fstab
+exit
 
 # Set up forwarding from port 80 (http) to 8080 and 443 (https) to 8443
 #IPtables doesn't persist after rebooting; fix this.
