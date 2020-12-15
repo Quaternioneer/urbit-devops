@@ -1,20 +1,3 @@
 #!/usr/bin/bash
 
-
-##!/usr/bin/expect -f
-
-#set timeout -1
-
-#spawn screen
-
-#send "cd piers && urbit -c new-comet\n"
-#expect {
-#  "urbit 0.4.5" {
-#    send "\001"
-#    send "d"
-#  }
-#}
-
-#Screen would hang after launching the comet, and my attempt at using tmux failed as well. I assumed that the user will access login code with HD wallet. 
-
 cd piers && ./urbit -c new-comet

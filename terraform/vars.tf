@@ -18,11 +18,11 @@ variable "ALLOW_SSH_FROM_IP_2" {
 }
 
 variable "AWS_AMI_ID" {
-  default = "ami-06e54d05255faf8f6"
+  default = "ami-01e78c5619c5e68b4"
 }
 
 variable "AWS_INSTANCE_TYPE" {
-  default = "t2.nano"
+  default = "t2.micro"
 }
 
 variable "AWS_REGION" {
@@ -30,7 +30,7 @@ variable "AWS_REGION" {
 }
 
 variable "AWS_USERNAME" {
-  default = "ubuntu"
+  default = "ec2-user"
 }
 
 variable "PROFILE" {
