@@ -23,7 +23,6 @@ sudo /sbin/swapon /var/swap.1
 echo "/var/swap.1 none	swap    defaults        0   0" | sudo tee -a /etc/fstab
 
 # Set up forwarding from port 80 (http) to 8080 and 443 (https) to 8443
-#IPtables doesn't persist after rebooting; fix this.
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to-destination :8080
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to-destination :8443
 
