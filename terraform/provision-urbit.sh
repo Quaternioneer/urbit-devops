@@ -2,8 +2,7 @@
 sudo yum update -y
 
 # Install all urbit dependencies
-#sudo yum --enablerepo epel install -y gcc gcc-c++ gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c libcurl-devel
-sudo yum install -y wget iptables iptables-services
+sudo yum install -y wget iptables-services
 
 # Download build, and install the urbit source package
 cd ~
